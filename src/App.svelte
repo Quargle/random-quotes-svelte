@@ -1,10 +1,26 @@
 <script lang="ts">
-	export let name: string;
+	let quote:string = "";
+	let author:string = "";
+
+
 </script>
 
+<svelte:head>
+	<title>Random Quote Machine</title>
+</svelte:head>
+
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+
+
+	<div id="quote-box">	</div>
+	<div id="text"></div>
+	<div id="author"></div>
+	<div id="buttons">
+		<button id="new-quote">New Quote</button>
+		<a id="tweet-quote" href="https://www.twitter.com/intent/tweet">Tweet</a>	
+	</div>
+
+
 </main>
 
 <style>
