@@ -28,13 +28,12 @@
 		quote =  chosenQuote.quote;
 		author = chosenQuote.author;
 	}
-
 </script>
 
 <svelte:head>
 	<title>Random Quote Machine</title>
 </svelte:head>
-<svelte:window on:load={getQuotes}></svelte:window>
+<svelte:window on:load={getQuotes} />
 
 <main>
 	<div id="quote-box">	
@@ -46,7 +45,7 @@
 		</div>
 	</div>
 	<div id="portfolio-link">
-		<a id="portfolio-link-button" href="https://quargle.github.io/Portfolio/">Portfolio</a>
+		<a id="portfolio-link-button" href="https://quargle.github.io/Portfolio/" target="_blank">Portfolio</a>
 	</div>
 </main>
 
@@ -96,7 +95,6 @@
 		padding-top: 20px;
 		font-size: 1.25em;
 		text-align: right;
-
 	}
 
 	#buttons {
@@ -126,13 +124,11 @@
 	}
 
 	#portfolio-link {
-		margin: 40px;
+		margin-top: 40px;
 	}
 
 	#portfolio-link-button {
 		color: var(--white);
 		Padding: 30px;
 	}
-	
-
 </style>
