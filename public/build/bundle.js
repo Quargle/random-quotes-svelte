@@ -358,6 +358,7 @@ var app = (function () {
     	let t5;
     	let div2;
     	let button;
+    	let t6;
     	let t7;
     	let a0;
     	let t8;
@@ -382,7 +383,7 @@ var app = (function () {
     			t5 = space();
     			div2 = element("div");
     			button = element("button");
-    			button.textContent = "New Quote";
+    			t6 = text("New Quote");
     			t7 = space();
     			a0 = element("a");
     			t8 = text("Tweet");
@@ -392,34 +393,36 @@ var app = (function () {
     			a1.textContent = "Portfolio";
     			document.title = "Random Quote Machine";
     			attr_dev(div0, "id", "text");
-    			attr_dev(div0, "class", "svelte-1hplshs");
-    			add_location(div0, file, 35, 2, 1010);
+    			attr_dev(div0, "class", "svelte-n418xs");
+    			add_location(div0, file, 70, 2, 1773);
     			attr_dev(div1, "id", "author");
-    			attr_dev(div1, "class", "svelte-1hplshs");
-    			add_location(div1, file, 36, 2, 1041);
-    			attr_dev(button, "class", "button svelte-1hplshs");
+    			attr_dev(div1, "class", "svelte-n418xs");
+    			add_location(div1, file, 71, 2, 1804);
+    			attr_dev(button, "class", "button color-transition svelte-n418xs");
     			attr_dev(button, "id", "new-quote");
-    			add_location(button, file, 38, 3, 1100);
-    			attr_dev(a0, "class", "button svelte-1hplshs");
+    			attr_dev(button, "style", /*cssVarStyles*/ ctx[2]);
+    			add_location(button, file, 73, 3, 1863);
+    			attr_dev(a0, "class", "button svelte-n418xs");
     			attr_dev(a0, "id", "tweet-quote");
     			attr_dev(a0, "href", a0_href_value = "https://www.twitter.com/intent/tweet?hashtags=quotes&text=\"" + /*quote*/ ctx[0] + "\"  --" + /*author*/ ctx[1] + "  ");
-    			add_location(a0, file, 39, 3, 1181);
+    			add_location(a0, file, 80, 3, 2012);
     			attr_dev(div2, "id", "buttons");
-    			attr_dev(div2, "class", "svelte-1hplshs");
-    			add_location(div2, file, 37, 2, 1078);
+    			attr_dev(div2, "class", "svelte-n418xs");
+    			add_location(div2, file, 72, 2, 1841);
     			attr_dev(div3, "id", "quote-box");
-    			attr_dev(div3, "class", "svelte-1hplshs");
-    			add_location(div3, file, 34, 1, 986);
+    			attr_dev(div3, "class", "svelte-n418xs");
+    			add_location(div3, file, 69, 1, 1749);
     			attr_dev(a1, "id", "portfolio-link-button");
     			attr_dev(a1, "href", "https://quargle.github.io/Portfolio/");
     			attr_dev(a1, "target", "_blank");
-    			attr_dev(a1, "class", "svelte-1hplshs");
-    			add_location(a1, file, 43, 2, 1362);
+    			attr_dev(a1, "class", "svelte-n418xs");
+    			add_location(a1, file, 84, 2, 2193);
     			attr_dev(div4, "id", "portfolio-link");
-    			attr_dev(div4, "class", "svelte-1hplshs");
-    			add_location(div4, file, 42, 1, 1334);
-    			attr_dev(main, "class", "svelte-1hplshs");
-    			add_location(main, file, 33, 0, 978);
+    			attr_dev(div4, "class", "svelte-n418xs");
+    			add_location(div4, file, 83, 1, 2165);
+    			attr_dev(main, "class", "color-transition svelte-n418xs");
+    			attr_dev(main, "style", /*cssVarStyles*/ ctx[2]);
+    			add_location(main, file, 68, 0, 1693);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -437,6 +440,7 @@ var app = (function () {
     			append_dev(div3, t5);
     			append_dev(div3, div2);
     			append_dev(div2, button);
+    			append_dev(button, t6);
     			append_dev(div2, t7);
     			append_dev(div2, a0);
     			append_dev(a0, t8);
@@ -446,8 +450,8 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(window, "load", /*getQuotes*/ ctx[2], false, false, false),
-    					listen_dev(button, "click", /*getQuote*/ ctx[3], false, false, false)
+    					listen_dev(window, "load", /*getQuotes*/ ctx[3], false, false, false),
+    					listen_dev(button, "click", /*getQuote*/ ctx[4], false, false, false)
     				];
 
     				mounted = true;
@@ -457,8 +461,16 @@ var app = (function () {
     			if (dirty & /*quote*/ 1) set_data_dev(t1, /*quote*/ ctx[0]);
     			if (dirty & /*author*/ 2) set_data_dev(t4, /*author*/ ctx[1]);
 
+    			if (dirty & /*cssVarStyles*/ 4) {
+    				attr_dev(button, "style", /*cssVarStyles*/ ctx[2]);
+    			}
+
     			if (dirty & /*quote, author*/ 3 && a0_href_value !== (a0_href_value = "https://www.twitter.com/intent/tweet?hashtags=quotes&text=\"" + /*quote*/ ctx[0] + "\"  --" + /*author*/ ctx[1] + "  ")) {
     				attr_dev(a0, "href", a0_href_value);
+    			}
+
+    			if (dirty & /*cssVarStyles*/ 4) {
+    				attr_dev(main, "style", /*cssVarStyles*/ ctx[2]);
     			}
     		},
     		i: noop,
@@ -482,12 +494,52 @@ var app = (function () {
     	return block;
     }
 
+    function getRandomNumber(max) {
+    	const randomNumber = Math.floor(Math.random() * max);
+    	return randomNumber;
+    }
+
     function instance($$self, $$props, $$invalidate) {
+    	let cssVarStyles;
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('App', slots, []);
     	let quote = "";
     	let author = "";
     	let quotesData = [];
+
+    	const colors = [
+    		"#264653",
+    		"#2a9d8f",
+    		"#e9c46a",
+    		"#f4a261",
+    		"#e76f51",
+    		"#001219",
+    		"#005f73",
+    		"#0a9396",
+    		"#94d2bd",
+    		"#e9d8a6",
+    		"#ee9b00",
+    		"#ca6702",
+    		"#bb3e03",
+    		"#ae2012",
+    		"#9b2226"
+    	];
+
+    	// const colors:Array<string> = [
+    	//   '#16a085',
+    	//   '#27ae60',
+    	//   '#2c3e50',
+    	//   '#f39c12',
+    	//   '#e74c3c',
+    	//   '#9b59b6',
+    	//   '#FB6964',
+    	//   '#342224',
+    	//   '#472E32',
+    	//   '#BDBB99',
+    	//   '#77B1A9',
+    	//   '#73A857'
+    	// ];
+    	let backgroundColor = '#14213D';
 
     	function getQuotes() {
     		fetch('https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json').then(response => response.json()).then(data => {
@@ -499,19 +551,15 @@ var app = (function () {
     		});
     	}
 
-    	function getRandomNumber() {
-    		const randomNumber = Math.floor(Math.random() * quotesData.length);
-    		return randomNumber;
-    	}
-
     	function getQuote() {
-    		const randomIndex = getRandomNumber();
+    		const randomIndex = getRandomNumber(quotesData.length);
 
     		//console.log(`Random number selected: ${randomIndex}`)
     		const chosenQuote = quotesData[randomIndex];
 
     		$$invalidate(0, quote = chosenQuote.quote);
     		$$invalidate(1, author = chosenQuote.author);
+    		$$invalidate(5, backgroundColor = colors[getRandomNumber(colors.length)]);
     	}
 
     	const writable_props = [];
@@ -524,22 +572,33 @@ var app = (function () {
     		quote,
     		author,
     		quotesData,
+    		colors,
+    		backgroundColor,
     		getQuotes,
     		getRandomNumber,
-    		getQuote
+    		getQuote,
+    		cssVarStyles
     	});
 
     	$$self.$inject_state = $$props => {
     		if ('quote' in $$props) $$invalidate(0, quote = $$props.quote);
     		if ('author' in $$props) $$invalidate(1, author = $$props.author);
     		if ('quotesData' in $$props) quotesData = $$props.quotesData;
+    		if ('backgroundColor' in $$props) $$invalidate(5, backgroundColor = $$props.backgroundColor);
+    		if ('cssVarStyles' in $$props) $$invalidate(2, cssVarStyles = $$props.cssVarStyles);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [quote, author, getQuotes, getQuote];
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*backgroundColor*/ 32) {
+    			$$invalidate(2, cssVarStyles = `--background-color:${backgroundColor}`);
+    		}
+    	};
+
+    	return [quote, author, cssVarStyles, getQuotes, getQuote, backgroundColor];
     }
 
     class App extends SvelteComponentDev {

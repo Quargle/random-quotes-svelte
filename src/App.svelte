@@ -1,7 +1,45 @@
 <script lang="ts">
+//	import { fade } from 'svelte/transition';
+
 	let quote:string = "";
 	let author:string = "";
 	let quotesData:Array<{quote: string, author: string}> = [];
+	const colors:Array<string> = [
+		"#264653",
+		"#2a9d8f",
+		"#e9c46a",
+		"#f4a261",
+		"#e76f51",		
+		"#001219",
+		"#005f73",
+		"#0a9396",
+		"#94d2bd",
+		"#e9d8a6",
+		"#ee9b00",
+		"#ca6702",
+		"#bb3e03",
+		"#ae2012",
+		"#9b2226"
+		];
+
+	
+	
+	// const colors:Array<string> = [
+	//   '#16a085',
+	//   '#27ae60',
+	//   '#2c3e50',
+	//   '#f39c12',
+	//   '#e74c3c',
+	//   '#9b59b6',
+	//   '#FB6964',
+	//   '#342224',
+	//   '#472E32',
+	//   '#BDBB99',
+	//   '#77B1A9',
+	//   '#73A857'
+	// ];
+	let backgroundColor:string = '#14213D'
+	$: cssVarStyles = `--background-color:${backgroundColor}`;
 
 	function getQuotes() {
 		fetch('https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json')
@@ -16,17 +54,18 @@
 		})
 	}
 
-	function getRandomNumber() {
-		const randomNumber:number = Math.floor(Math.random() * quotesData.length);
+	function getRandomNumber(max:number) {
+		const randomNumber:number = Math.floor(Math.random() * max);
 		return randomNumber;
 	}
 
 	function getQuote() {
-		const randomIndex = getRandomNumber();
+		const randomIndex = getRandomNumber(quotesData.length);
 		//console.log(`Random number selected: ${randomIndex}`)
 		const chosenQuote = quotesData[randomIndex];
 		quote =  chosenQuote.quote;
 		author = chosenQuote.author;
+		backgroundColor = colors[getRandomNumber(colors.length)];
 	}
 </script>
 
@@ -35,12 +74,18 @@
 </svelte:head>
 <svelte:window on:load={getQuotes} />
 
-<main>
+<main class="color-transition" style="{cssVarStyles}">
 	<div id="quote-box">	
 		<div id="text">{quote}</div>
 		<div id="author">-- {author}</div>
 		<div id="buttons">
-			<button class="button" id="new-quote" on:click={getQuote} >New Quote</button>
+			<button 
+				class="button color-transition" 
+				id="new-quote" 
+				on:click={getQuote} 
+				style="{cssVarStyles}">
+				New Quote
+			</button>
 			<a class="button" id="tweet-quote" href='https://www.twitter.com/intent/tweet?hashtags=quotes&text="{quote}"  --{author}  '>Tweet</a>	
 		</div>
 	</div>
@@ -50,7 +95,6 @@
 </main>
 
 <style>
-
 	:root {
 		--black: #000000;
 		--blue: #14213D;
@@ -115,7 +159,7 @@
 
 	#new-quote {
 		border: none;
-		background-color: var(--blue);
+		/*background-color: var(--blue);*/
 	}
 
 	#tweet-quote {
@@ -130,5 +174,11 @@
 	#portfolio-link-button {
 		color: var(--white);
 		Padding: 30px;
+	}
+
+	.color-transition {
+		background-color: var(--background-color); 
+		transition-property: background-color; 
+		transition-duration: 4s;
 	}
 </style>
