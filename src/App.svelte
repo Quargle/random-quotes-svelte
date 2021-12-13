@@ -46,7 +46,7 @@
 		</div>
 	</div>
 	<div id="portfolio-link">
-		<a id="portfolio-link-button" href="https://quargle.github.io/Portfolio/">Back To Portfolio Site</a>
+		<a id="portfolio-link-button" href="https://quargle.github.io/Portfolio/">Portfolio</a>
 	</div>
 </main>
 
@@ -74,21 +74,24 @@
 		border-radius: 5px;
 		background-color: var(--white);
 		width: 450px;
+		max-width: 100%;
+		max-height: 100%;
 		padding: 40px 50px;
 		height: auto;
 		display: flex;
 		flex-direction: column;
+		box-sizing: border-box;
 	}
 
 	#text {
-		width: 450px;
+		width: auto;
 		height: auto;
 		font-weight: 500;
 		font-size: 1.75em;
 	}
 
 	#author {
-		width: 450px;
+		width: auto;
 		height: auto;
 		padding-top: 20px;
 		font-size: 1.25em;
@@ -102,8 +105,7 @@
 
 	.button {
 		border-radius: 5px;
-		color: var(--black);
-		border: 1px solid grey;
+		color: white;
 		width: auto;
 		height: auto;
 		background-color: white;
@@ -113,14 +115,23 @@
 
 	}
 
+	#new-quote {
+		border: none;
+		background-color: var(--blue);
+	}
+
+	#tweet-quote {
+		background-color: rgb(29, 155, 240);
+		border: none;
+	}
+
 	#portfolio-link {
-		background-color: var(--yellow);
-		border-radius: 5px;
 		margin: 40px;
-		padding: 20px;
-	}	
+	}
+
 	#portfolio-link-button {
-		color: var(--black);
+		color: var(--white);
+		Padding: 30px;
 	}
 	
 
